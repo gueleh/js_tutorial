@@ -27,3 +27,44 @@ function functionalURLs(states) {
 	return states.map(state => website + urlify(state));
 }
 console.log(functionalURLs(states));
+
+// Returns a single word string
+function singleWord(state) {
+	return state.split(/\s+/).length === 1;
+}
+
+// Test words
+function wordCountTest(state, length) {
+	return state.split(/\s+/).length === length;
+}
+
+// filter: Imperative version
+function imperativeFilter(states) {
+	let singleWordStates = [];
+	states.forEach(function(state) {
+		if (singleWord(state)) {
+			singleWordStates.push(state);
+		}
+	});
+	return singleWordStates;
+}
+console.log(imperativeFilter(states));
+
+// filter: Functional version
+function functionalFilter(states) {
+//	return states.filter(state => singleWord(state));
+	return states.filter(state => wordCountTest(state, 1));
+}
+console.log(functionalFilter(states));
+
+// filter: Dakota via includes
+function functionalDakota1(states) {
+	return states.filter(state => state.includes("Dakota"));
+}
+console.log(functionalDakota1(states));
+
+// filter: Dakota via regex
+function functionalTwoWordStates(states) {
+	return states.filter(state => wordCountTest(state, 2));
+}
+console.log(functionalTwoWordStates(states));
