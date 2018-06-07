@@ -14,17 +14,17 @@ But bears it out even to the edge of doom.
 	I never writ, nor no man ever loved. `;
 
 // Unique words object
-let uniques = {};
+let uniques = new Map();
 // All words in the text
 let words = sonnet.match(/[\w']+/g);
 
 // Iterate through words and build up an associative array of unique words.
 for (let i = 0; i < words.length; i++) {
 	let word = words[i];
-	if (uniques[word]) {
-		uniques[word] += 1;
+	if (!!uniques.get(word)) {
+		uniques.set(word, uniques.get(word) + 1);
 	} else {
-		uniques[word] = 1;
+		uniques.set(word, 1);
 	}
 }
 
