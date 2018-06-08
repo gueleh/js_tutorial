@@ -68,3 +68,24 @@ function functionalTwoWordStates(states) {
 	return states.filter(state => wordCountTest(state, 2));
 }
 console.log(functionalTwoWordStates(states));
+
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// reduce: Iterative solution
+function iterativeSum(array) {
+	let total = 0;
+	array.forEach(function(n) {
+		total += n;
+	})
+	return total;
+}
+console.log(iterativeSum(a));
+
+let gesamt = a.reduce((total, n) => { return total += n });
+console.log(gesamt);
+
+// reduce: With reduce
+function functionalSum(array) {
+	return array.reduce((total, n) => { return total += n });
+}
+console.log(functionalSum(a));
