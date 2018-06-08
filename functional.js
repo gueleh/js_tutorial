@@ -86,6 +86,31 @@ console.log(gesamt);
 
 // reduce: With reduce
 function functionalSum(array) {
-	return array.reduce((total, n) => { return total += n });
+	return array.reduce((total, n) => { return total += n }, 0);
 }
 console.log(functionalSum(a));
+
+// reduce object: Imperative solution
+function imperativeLengths(states) {
+	let lenghts = {};
+	states.forEach(function(state) {
+		lenghts[state] = state.length;
+	});
+	return lenghts;
+}
+console.log(imperativeLengths(states));
+
+// reduce object: functional solution
+function functionalLengths(states) {
+	return states.reduce((lengths, state) => {
+		lengths[state] = state.length;
+		return lengths;
+	}, {});
+}
+console.log(functionalLengths(states));
+
+// reduce object: Product
+function functionalProduct(array) {
+	return array.reduce((total, n) => { return total *= n }, 1);
+}
+console.log(functionalProduct(a));
